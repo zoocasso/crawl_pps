@@ -19,7 +19,7 @@ GROUP BY prdctClsfcNo;
 
 CREATE TABLE TB_PPS_MALL_LIST_HIGH_COST
 SELECT b.* FROM temp3 a
-LEFT JOIN `TB_PPS_MALL_LIST` b
+INNER JOIN `TB_PPS_MALL_LIST` b
 ON a.prdctClsfcNo = b.prdctClsfcNo AND a.prdctIdntNo = b.prdctIdntNo;
 
 

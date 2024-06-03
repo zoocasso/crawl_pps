@@ -11,7 +11,7 @@ WHERE b.rn = ROUND(b.cnt/2);
 
 CREATE TABLE TB_PPS_MALL_LIST_MEDIAN_COST
 SELECT b.* FROM temp1 a
-LEFT JOIN `TB_PPS_MALL_LIST` b
+INNER JOIN `TB_PPS_MALL_LIST` b
 ON a.prdctClsfcNo = b.prdctClsfcNo AND a.prdctIdntNo = b.prdctIdntNo;
 
 
