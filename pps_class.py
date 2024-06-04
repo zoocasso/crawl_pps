@@ -24,7 +24,7 @@ def unit_api(api_url,serviceKey,requests_url,pageNo,numOfRows):
     
 
 if __name__ == '__main__':
-    serviceKey = "lXysDvYOCh6QXuka88ofyLY8joQoc1JeQgAb%2BoeGcVCgBXcoUQSAJcLk8hTlWsccOAYEEF%2BPJmE5G2M0zgRxRQ%3D%3D"
+    serviceKey = "%2FlZ8wIKM8vHNKqzLdtZE4by4zTQM8ZZ7a8m6jyvG2%2B6x9IHutt%2FJyj5U2nkMyyQKGB%2F%2Fad%2FgXlRT28CUIzlkEQ%3D%3D"
     requests_url = "http://apis.data.go.kr/1230000/ThngListInfoService03"
     pageNo = 1
     numOfRows = 999
