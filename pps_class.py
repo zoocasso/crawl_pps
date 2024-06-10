@@ -9,13 +9,13 @@ conn = db_connection.connect()
 
 def unit_api(api_url,serviceKey,requests_url,pageNo,numOfRows):
     unit_url = f'{requests_url}/{api_url}?type=json&pageNo={pageNo}&numOfRows={numOfRows}&ServiceKey={serviceKey}'
-    res = requests.get(unit_url, verify=False)
+    res = requests.get(unit_url, verify=False, timeout=60)
     time.sleep(10)
     item_list = res.json()['response']['body']['items']
     total_count = res.json()['response']['body']['totalCount']
     api_tb = pd.DataFrame(item_list)
     api_tb.columns=['PRDCTCLSFCNO','PRDCTCLSFCNONM','PRDCTCLSFCNOENGNM','PRDCTCLSFCNONMDSCRPT','USEYN','CHGDATE']
-    api_tb.to_sql(name='class_tb', con=db_connection, if_exists='append', index=False)
+    api_tb.to_sql(name='TB_PPS_API', con=db_connection, if_exists='append', index=False)
     if int(total_count)<int(numOfRows)*int(pageNo):
         return None
     else:
