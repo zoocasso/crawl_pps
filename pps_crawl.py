@@ -130,7 +130,7 @@ def get_db_data(years,months):
 if __name__ == '__main__':
     end_year = 2024
     start_year = 2024
-    month_list = [5,6,7,8,9,10,11,12]
+    month_list = [5]
     for i in range(end_year+1-start_year):
         for j in month_list:
             years = i + start_year

@@ -65,8 +65,8 @@ def get_api(pageNo,numOfRows,inqryBgnDate,inqryEndDate):
 if __name__ == '__main__':
     pageNo = 1
     numOfRows = "999"
-    inqryBgnDate = "20231201"
-    inqryEndDate = "20231231"
+    inqryBgnDate = "20240501"
+    inqryEndDate = "20240531"
     cnt = get_api(pageNo,numOfRows,inqryBgnDate,inqryEndDate)
     while True:
         print(cnt)
