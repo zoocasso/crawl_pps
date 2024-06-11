@@ -4,28 +4,20 @@ FROM `TB_PPS_INDIVIDUAL_ATTRIBUTE_INFORMATION`
 GROUP BY PRDCTCLSFCNO, PRDCTIDNTNO;
 
 CREATE TABLE temp2
-SELECT a.*
-FROM temp1 a
-INNER JOIN (
-SELECT PRDCTCLSFCNO, MAX(개수) AS 최대개수
-FROM temp1
-GROUP BY PRDCTCLSFCNO
-) b
-ON a.PRDCTCLSFCNO=b.PRDCTCLSFCNO and a.개수 = b.최대개수;
-
-CREATE TABLE temp3
-SELECT PRDCTCLSFCNO, MAX(PRDCTIDNTNO) AS PRDCTIDNTNO
-FROM temp2
-GROUP BY PRDCTCLSFCNO;
+SELECT *
+FROM (
+	SELECT *,
+	ROW_NUMBER() OVER(PARTITION BY prdctClsfcNo ORDER BY 개수 DESC) AS a
+	FROM temp1) AS b
+WHERE a = 1;
 
 CREATE TABLE TB_PPS_MOST_INDIVIDUAL_ATTRIBUTE_INFORMATION
-SELECT b.*
-FROM temp3 a
-INNER JOIN `TB_PPS_MALL_LIST` b
-ON a.PRDCTCLSFCNO = b.PRDCTCLSFCNO
-AND a.PRDCTIDNTNO = b.PRDCTIDNTNO;
+SELECT a.*                                                          
+FROM `TB_PPS_API` a                                             
+INNER JOIN temp2 b                                                 
+ON a.prdctClsfcNo = b.prdctIdntNo
+AND a.prdctIdntNo = b.prdctIdntNo;
 
 
 drop table temp1;
 drop table temp2;
-drop table temp3;
