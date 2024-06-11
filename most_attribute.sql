@@ -15,8 +15,8 @@ CREATE TABLE TB_PPS_MOST_INDIVIDUAL_ATTRIBUTE_INFORMATION
 SELECT a.*                                                          
 FROM `TB_PPS_API` a                                             
 INNER JOIN temp2 b                                                 
-ON a.prdctClsfcNo = b.prdctIdntNo
-AND a.prdctIdntNo = b.prdctIdntNo;
+ON a.prdctClsfcNo = b.PRDCTCLSFCNO
+AND a.prdctIdntNo = b.PRDCTIDNTNO;
 
 
 drop table temp1;

@@ -23,5 +23,7 @@ FROM (
 	FROM temp2) AS b
 WHERE a = 1;
 
+ALTER TABLE TB_PPS_MALL_LIST_MEDIAN_COST DROP COLUMN a;
+
 drop table temp1;
 drop table temp2;
