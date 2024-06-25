@@ -8,7 +8,7 @@ db_connection = create_engine(db_connection_str)
 conn = db_connection.connect()
 
 def get_api(pageNo,numOfRows,inqryBgnDt,inqryEndDt):
-    serviceKey = "%2FlZ8wIKM8vHNKqzLdtZE4by4zTQM8ZZ7a8m6jyvG2%2B6x9IHutt%2FJyj5U2nkMyyQKGB%2F%2Fad%2FgXlRT28CUIzlkEQ%3D%3D"
+    serviceKey = "Hcq6v9OfJoi2w0AF1IFkBe5WJ1GQ%2B4F7R5hGZKSMT1GKehRscAKNAAZoaAiIGzR5V8eUyHk54NSYxxDkH5odDQ%3D%3D"
     requests_url = f"http://apis.data.go.kr/1230000/ThngListInfoService03/getThngPrdnmLocplcAccotListInfoInfoPrdlstSearch01?type=json&numOfRows={numOfRows}&pageNo={str(pageNo)}&inqryBgnDt={inqryBgnDt}&inqryEndDt={inqryEndDt}&serviceKey={serviceKey}"
     res = requests.get(requests_url, verify = False, timeout=60)
     item_list = res.json()['response']['body']['items']
