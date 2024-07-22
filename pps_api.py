@@ -43,8 +43,8 @@ def get_api(pageNo,numOfRows,inqryBgnDt,inqryEndDt):
 if __name__ == '__main__':
     pageNo = 1
     numOfRows = "999"
-    inqryBgnDt = "202405010000"
-    inqryEndDt = "202405312359"
+    inqryBgnDt = "202406010000"
+    inqryEndDt = "202406302359"
     
     cnt = get_api(pageNo,numOfRows,inqryBgnDt,inqryEndDt)
     while True:

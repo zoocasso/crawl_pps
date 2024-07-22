@@ -1,6 +1,7 @@
+import pandas as pd
 import requests
 import math
-import pandas as pd
+import time
 
 from sqlalchemy import create_engine
 db_connection_str = 'mysql+pymysql://root:vision9551@127.0.0.1/pps_test'
@@ -12,6 +13,7 @@ def get_api(pageNo,numOfRows,inqryBgnDate,inqryEndDate):
     
     requests_url = f"http://apis.data.go.kr/1230000/ShoppingMallPrdctInfoService06/getShoppingMallPrdctInfoList01?inqryDiv=1&type=json&numOfRows={numOfRows}&pageNo={str(pageNo)}&inqryBgnDate={inqryBgnDate}&inqryEndDate={inqryEndDate}&serviceKey={serviceKey}"
     res = requests.get(requests_url, verify = False, timeout=60)
+    time.sleep(10)
     item_list = res.json()['response']['body']['items']
     total_count = res.json()['response']['body']['totalCount']
     repeat_count = math.floor(total_count/int(numOfRows))
@@ -53,15 +55,15 @@ def get_api(pageNo,numOfRows,inqryBgnDate,inqryEndDate):
         api_dict['cntrctCorpBizno'] = item['cntrctCorpBizno']
         api_list.append(api_dict)
     TB_PPS_API = pd.DataFrame(api_list)
-    TB_PPS_API.to_sql(name='TB_PPS_MALL_LIST', con=db_connection, if_exists='append', index=False)
+    TB_PPS_API.to_sql(name='TB_PPS_MALL_LIST_2024', con=db_connection, if_exists='append', index=False)
     return repeat_count
 
 
 if __name__ == '__main__':
     pageNo = 1
     numOfRows = "999"
-    inqryBgnDate = "20240501"
-    inqryEndDate = "20240531"
+    inqryBgnDate = "19000101"
+    inqryEndDate = "19001231"
     cnt = get_api(pageNo,numOfRows,inqryBgnDate,inqryEndDate)
     while True:
         print(cnt)

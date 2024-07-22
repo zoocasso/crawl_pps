@@ -15,7 +15,7 @@ def unit_api(api_url,serviceKey,requests_url,pageNo,numOfRows):
     total_count = res.json()['response']['body']['totalCount']
     api_tb = pd.DataFrame(item_list)
     api_tb.columns=['PRDCTCLSFCNO','PRDCTCLSFCNONM','PRDCTCLSFCNOENGNM','PRDCTCLSFCNONMDSCRPT','USEYN','CHGDATE']
-    api_tb.to_sql(name='TB_PPS_API', con=db_connection, if_exists='append', index=False)
+    api_tb.to_sql(name='TB_PPS_CLASS_2024', con=db_connection, if_exists='append', index=False)
     if int(total_count)<int(numOfRows)*int(pageNo):
         return None
     else:
@@ -24,7 +24,7 @@ def unit_api(api_url,serviceKey,requests_url,pageNo,numOfRows):
     
 
 if __name__ == '__main__':
-    serviceKey = "%2FlZ8wIKM8vHNKqzLdtZE4by4zTQM8ZZ7a8m6jyvG2%2B6x9IHutt%2FJyj5U2nkMyyQKGB%2F%2Fad%2FgXlRT28CUIzlkEQ%3D%3D"
+    serviceKey = "Hcq6v9OfJoi2w0AF1IFkBe5WJ1GQ%2B4F7R5hGZKSMT1GKehRscAKNAAZoaAiIGzR5V8eUyHk54NSYxxDkH5odDQ%3D%3D"
     requests_url = "http://apis.data.go.kr/1230000/ThngListInfoService03"
     pageNo = 1
     numOfRows = 999
